@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Store
+
+# Model Form Field configuration
+form: $/blackseadigital/partners/models/store/fields.yaml
+
+# Model Class name
+modelClass: BlackSeaDigital\Partners\Models\Store
+
+# Default redirect location
+defaultRedirect: blackseadigital/partners/stores
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: blackseadigital/partners/stores/update/:id
+    redirectClose: blackseadigital/partners/stores
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: blackseadigital/partners/stores
+    redirectClose: blackseadigital/partners/stores
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

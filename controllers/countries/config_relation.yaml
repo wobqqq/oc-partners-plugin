@@ -1,0 +1,12 @@
+cities:
+    label: Cities
+    view:
+        list: $/blackseadigital/partners/models/city/columns.yaml
+        recordUrl: blackseadigital/partners/cities/update/:id
+        toolbarButtons: create|delete
+        showSearch: true
+    manage:
+        form: $/blackseadigital/partners/models/city/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+        showSorting: true

@@ -1,0 +1,22 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+        sortable: true
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    external_id:
+        label: External id
+        type: text
+        searchable: true
+        sortable: true
+    sort_order:
+        label: Sort order
+        type: text
+        searchable: false
+        sortable: true
+

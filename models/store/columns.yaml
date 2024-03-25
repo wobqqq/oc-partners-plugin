@@ -1,0 +1,32 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+        sortable: true
+    address:
+        label: Address
+        type: text
+        searchable: true
+        sortable: true
+    city:
+        label: City
+        relation: city
+        select: name
+        searchable: true
+        sortable: true
+    lat:
+        label: Lat
+        type: text
+        searchable: false
+        sortable: false
+    lon:
+        label: Lon
+        type: text
+        searchable: false
+        sortable: false
+    external_id:
+        label: External id
+        type: text
+        searchable: true
+        sortable: true

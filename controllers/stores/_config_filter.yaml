@@ -1,0 +1,6 @@
+scopes:
+    city:
+        label: City
+        modelClass: BlackSeaDigital\Partners\Models\City
+        conditions: city_id in (:filtered)
+        nameFrom: name

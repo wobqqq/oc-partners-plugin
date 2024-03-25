@@ -1,0 +1,33 @@
+plugin:
+    name: Partners
+    icon: icon-handshake-o
+    homepage: ''
+navigation:
+    partners:
+        label: Partners
+        url: blackseadigital/partners/partners
+        permissions:
+            - partners
+        icon: icon-handshake-o
+        sideMenu:
+            partners:
+                label: Partners
+                url: blackseadigital/partners/partners
+                permissions:
+                    - partners
+                icon: icon-handshake-o
+            categories:
+                label: Categories
+                url: blackseadigital/partners/categories
+                permissions:
+                    - partners
+                icon: icon-sitemap
+            countries:
+                label: Countries
+                url: blackseadigital/partners/countries
+                permissions:
+                    - partners
+                icon: icon-globe
+permissions:
+    partners:
+        label: Partners

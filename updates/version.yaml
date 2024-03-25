@@ -1,0 +1,6 @@
+v1.0.1:
+    - create_categories_table.php
+    - create_countries_table.php
+    - create_cities_table.php
+    - create_partners_table.php
+    - create_stores_table.php

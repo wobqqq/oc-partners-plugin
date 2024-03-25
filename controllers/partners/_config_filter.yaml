@@ -1,0 +1,24 @@
+scopes:
+    is_active:
+        label: Active
+        type: switch
+        conditions:
+            - is_active <> true
+            - is_active = true
+    is_online:
+        label: Online
+        type: switch
+        conditions:
+            - is_online <> true
+            - is_online = true
+    is_offline:
+        label: Offline
+        type: switch
+        conditions:
+            - is_offline <> true
+            - is_offline = true
+    category:
+        label: Category
+        modelClass: BlackSeaDigital\Partners\Models\Category
+        conditions: category_id in (:filtered)
+        nameFrom: name

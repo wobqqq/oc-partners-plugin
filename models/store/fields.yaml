@@ -1,0 +1,39 @@
+fields:
+    address:
+        label: Address
+        span: full
+        required: true
+        type: text
+        placeholder: Address
+tabs:
+    icons:
+        Stores: icon-map-pin
+        Settings: icon-cogs
+        Content: icon-file-text-o
+    fields:
+        external_id:
+            label: External id
+            span: left
+            type: text
+            placeholder: External id
+            tab: Settings
+        city:
+            label: City
+            type: relation
+            span: left
+            required: true
+            select: name
+            tab: Settings
+            showSearch: true
+        lat:
+            label: Lat
+            span: left
+            type: text
+            placeholder: Lat
+            tab: Settings
+        lon:
+            label: Lon
+            span: left
+            type: text
+            placeholder: Lat
+            tab: Settings

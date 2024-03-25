@@ -1,0 +1,110 @@
+fields:
+    name:
+        label: Name
+        span: left
+        required: true
+        type: text
+        placeholder: Name
+    slug:
+        label: Slug
+        span: right
+        required: true
+        placeholder: Slug
+        preset:
+            field: name
+            type: slug
+        type: text
+    logo:
+        label: Logo
+        mode: image
+        fileTypes: jpg,jpeg,bmp,png,webp,gif,svg,avif
+        span: full
+        type: fileupload
+tabs:
+    lazy:
+        - Stores
+        - Banners
+    icons:
+        Stores: icon-map-pin
+        Settings: icon-cogs
+        Content: icon-file-text-o
+        Banners: icon-picture-o
+    fields:
+        is_active:
+            label: Active
+            span: left
+            default: 0
+            type: switch
+            tab: Settings
+        external_id:
+            label: External id
+            span: left
+            type: text
+            placeholder: External id
+            tab: Settings
+        category:
+            label: Category
+            type: relation
+            span: left
+            required: true
+            select: name
+            tab: Settings
+            showSearch: true
+        is_online:
+            label: Online
+            span: left
+            default: 0
+            type: switch
+            tab: Settings
+        is_offline:
+            label: Offline
+            span: left
+            default: 0
+            type: switch
+            tab: Settings
+        online_points:
+            label: Online points
+            span: left
+            type: text
+            placeholder: Online points
+            tab: Settings
+        offline_points:
+            label: Offline points
+            span: left
+            type: text
+            placeholder: Offline points
+            tab: Settings
+        interest_free_installments:
+            label: Interest-free installments
+            span: left
+            type: text
+            placeholder: Interest-free installments
+            tab: Settings
+        link:
+            label: Link
+            span: left
+            type: text
+            placeholder: Link
+            tab: Settings
+        description:
+            label: Description
+            size: giant
+            span: full
+            type: textarea
+            placeholder: Description
+            tab: Content
+        banners:
+            label: Banners
+            mode: image
+            fileTypes: jpg,jpeg,bmp,png,webp,gif,svg,avif
+            span: full
+            type: fileupload
+            tab: Banners
+        stores:
+            label: Stores
+            span: full
+            context:
+                - update
+            type: partial
+            path: ~/plugins/blackseadigital/partners/controllers/partners/_stores.htm
+            tab: Stores

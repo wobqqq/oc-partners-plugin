@@ -1,0 +1,31 @@
+import:
+    title: Import partners
+    modelClass: Blackseadigital\Partners\Import\PartnerImport
+    list:
+        columns:
+            external_id:
+                label: External id
+            name:
+                label: Name
+            category_external_id:
+                label: Category external id
+            is_active:
+                label: Active
+            is_online:
+                label: Online
+            is_offline:
+                label: Offline
+            online_points:
+                label: Online points
+            offline_points:
+                label: Offline points
+            interest_free_installments:
+                label: Interest-free installments
+            link:
+                label: Link
+            description:
+                label: Description
+            logo:
+                label: Logo
+            banners:
+                label: Banners

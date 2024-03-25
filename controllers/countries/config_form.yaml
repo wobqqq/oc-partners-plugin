@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Country
+
+# Model Form Field configuration
+form: $/blackseadigital/partners/models/country/fields.yaml
+
+# Model Class name
+modelClass: BlackSeaDigital\Partners\Models\Country
+
+# Default redirect location
+defaultRedirect: blackseadigital/partners/countries
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: blackseadigital/partners/countries/update/:id
+    redirectClose: blackseadigital/partners/countries
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: blackseadigital/partners/countries
+    redirectClose: blackseadigital/partners/countries
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

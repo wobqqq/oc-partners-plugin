@@ -1,0 +1,42 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+        sortable: true
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    is_active:
+        label: Active
+        type: switch
+        searchable: false
+        sortable: true
+    is_online:
+        label: Online
+        type: switch
+        searchable: false
+        sortable: true
+    is_offline:
+        label: Offline
+        type: switch
+        searchable: false
+        sortable: true
+    category:
+        label: Category
+        relation: category
+        select: name
+        searchable: true
+        sortable: true
+    slug:
+        label: Slug
+        type: text
+        searchable: true
+        sortable: true
+    external_id:
+        label: External id
+        type: text
+        searchable: true
+        sortable: true

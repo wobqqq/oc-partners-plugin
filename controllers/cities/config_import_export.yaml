@@ -1,0 +1,11 @@
+import:
+    title: Import cities
+    modelClass: Blackseadigital\Partners\Import\CityImport
+    list:
+        columns:
+            external_id:
+                label: External id
+            name:
+                label: Name
+            country_external_id:
+                label: Country external id

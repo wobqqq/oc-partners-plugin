@@ -1,0 +1,17 @@
+import:
+    title: Import stores
+    modelClass: Blackseadigital\Partners\Import\StoreImport
+    list:
+        columns:
+            external_id:
+                label: External id
+            address:
+                label: Address
+            lat:
+                label: Lat
+            lon:
+                label: Lon
+            partner_external_id:
+                label: Partner external id
+            city_external_id:
+                label: City external id

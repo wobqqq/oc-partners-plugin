@@ -1,0 +1,9 @@
+import:
+    title: Import countries
+    modelClass: Blackseadigital\Partners\Import\CountryImport
+    list:
+        columns:
+            external_id:
+                label: External id
+            name:
+                label: Name

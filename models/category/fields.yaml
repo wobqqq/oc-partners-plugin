@@ -1,0 +1,17 @@
+fields:
+    name:
+        label: Name
+        span: left
+        required: true
+        type: text
+        placeholder: Name
+tabs:
+    icons:
+        Settings: icon-cogs
+    fields:
+        external_id:
+            label: External id
+            span: left
+            type: text
+            placeholder: External id
+            tab: Settings

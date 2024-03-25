@@ -1,0 +1,13 @@
+stores:
+    label: Stores
+    view:
+        list: $/blackseadigital/partners/models/store/columns.yaml
+        filter: $/blackseadigital/partners/controllers/stores/_config_filter.yaml
+        recordUrl: blackseadigital/partners/stores/update/:id
+        toolbarButtons: create|delete
+        showSearch: true
+    manage:
+        form: $/blackseadigital/partners/models/store/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+        showSorting: true

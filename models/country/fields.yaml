@@ -1,0 +1,28 @@
+fields:
+    name:
+        label: Name
+        span: left
+        required: true
+        type: text
+        placeholder: Name
+tabs:
+    lazy:
+        - Cities
+    icons:
+        Cities: icon-map-signs
+        Settings: icon-cogs
+    fields:
+        external_id:
+            label: External id
+            span: left
+            type: text
+            placeholder: Name
+            tab: Settings
+        cities:
+            label: Cities
+            span: full
+            context:
+                - update
+            type: partial
+            path: ~/plugins/blackseadigital/partners/controllers/countries/_cities.htm
+            tab: Cities

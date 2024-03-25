@@ -1,0 +1,9 @@
+import:
+    title: Import categories
+    modelClass: Blackseadigital\Partners\Import\CategoryImport
+    list:
+        columns:
+            external_id:
+                label: External id
+            name:
+                label: Name
