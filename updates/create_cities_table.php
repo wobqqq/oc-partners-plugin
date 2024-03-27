@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('external_id')->index()->nullable();
             $table->smallInteger('country_id')->unsigned()->index();
+            $table->smallInteger('sort_order')->nullable()->unsigned();
             $table->softDeletes();
 
             $table->foreign('country_id')

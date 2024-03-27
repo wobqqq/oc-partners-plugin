@@ -11,10 +11,13 @@ final class Cities extends Controller
 {
     public $implement = [
         \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ListController::class,
         \Backend\Behaviors\ImportExportController::class,
     ];
 
     public string $formConfig = 'config_form.yaml';
+
+    public string $listConfig = 'config_list.yaml';
 
     public string $importExportConfig = 'config_import_export.yaml';
 
@@ -22,6 +25,6 @@ final class Cities extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('BlackSeaDigital.Partners', 'partners', 'countries');
+        BackendMenu::setContext('BlackSeaDigital.Partners', 'partners', 'cities');
     }
 }

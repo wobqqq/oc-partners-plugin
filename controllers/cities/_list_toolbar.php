@@ -1,9 +1,9 @@
 <div data-control="toolbar loader-container">
     <a
-        href="<?= Backend::url('blackseadigital/partners/countries/create') ?>"
+        href="<?= Backend::url('blackseadigital/partners/cities/create') ?>"
         class="btn btn-primary">
         <i class="icon-plus"></i>
-        <?= __("New :name", ['name' => 'Country']) ?>
+        <?= __("New :name", ['name' => 'City']) ?>
     </a>
 
     <div class="toolbar-divider"></div>
@@ -22,7 +22,7 @@
 
     <div class="toolbar-divider"></div>
 
-    <a href="<?= Backend::url('blackseadigital/partners/countries/import') ?>" class="btn btn-primary oc-icon-download">
-        <?= __("Import countries") ?>
+    <a href="<?= Backend::url('blackseadigital/partners/cities/import') ?>" class="btn btn-primary oc-icon-download">
+        <?= __("Import cities") ?>
     </a>
 </div>

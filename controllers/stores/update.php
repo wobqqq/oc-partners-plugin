@@ -1,17 +1,23 @@
-<?php Block::put('breadcrumb') ?>
+<?php
+Block::put('breadcrumb') ?>
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?= Backend::url('blackseadigital/partners/partners') ?>">Partners</a></li>
     <?php
     if (!empty($formModel) && !empty($formModel->partner)) { ?>
         <li class="breadcrumb-item"><a
-                href="<?= Backend::url('blackseadigital/partners/partners/update/' . $formModel->partner->id) ?>"><?= $formModel->partner->name ?></a>
+                href="<?= Backend::url(
+                    'blackseadigital/partners/partners/update/' . $formModel->partner->id
+                ) ?>"><?= $formModel->partner->name ?></a>
         </li>
-    <?php } ?>
+        <?php
+    } ?>
     <li class="breadcrumb-item active" aria-current="page"><?= e($this->pageTitle) ?></li>
 </ol>
-<?php Block::endPut() ?>
+<?php
+Block::endPut() ?>
 
-<?php if (!$this->fatalError): ?>
+<?php
+if (!$this->fatalError): ?>
 
     <?= Form::open(['class' => 'd-flex flex-column h-100']) ?>
 
@@ -60,7 +66,8 @@
 
     <?= Form::close() ?>
 
-<?php else: ?>
+<?php
+else: ?>
 
     <p class="flash-message static error">
         <?= e($this->fatalError) ?>
@@ -73,4 +80,5 @@
         </a>
     </p>
 
-<?php endif ?>
+<?php
+endif ?>

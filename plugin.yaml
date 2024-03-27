@@ -27,7 +27,13 @@ navigation:
                 url: blackseadigital/partners/countries
                 permissions:
                     - partners
-                icon: icon-globe
+                icon: icon-map
+            cities:
+                label: Cities
+                url: blackseadigital/partners/cities
+                permissions:
+                    - partners
+                icon: icon-map-signs
 permissions:
     partners:
         label: Partners

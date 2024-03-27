@@ -6,41 +6,48 @@ namespace BlackSeaDigital\Partners\Transformers;
 
 use Arr;
 use BlackSeaDigital\Partners\Dto\Filters\CityFilterDto;
+use BlackSeaDigital\Partners\Dto\Filters\CountryFilterDto;
 use BlackSeaDigital\Partners\Dto\Filters\PartnerFilterDto;
 use BlackSeaDigital\Partners\Dto\Filters\StoreFilterDto;
-use Blackseadigital\Partners\Enums\QueryListMode;
-use Request;
 
 final class FilterTransformer
 {
     public static function cityFilterFromRequest(array $filter): CityFilterDto
     {
         return new CityFilterDto(
-            (int)Arr::get($filter, 'countryId'),
+            (array)Arr::get($filter, 'countryIds', []),
+            (int)Arr::get($filter, 'partnerId'),
         );
     }
 
-    public static function storeFilterFromRequest(array $filter): StoreFilterDto
+    public static function countryFilterFromRequest(array $filter): CountryFilterDto
+    {
+        return new CountryFilterDto(
+            (int)Arr::get($filter, 'partnerId'),
+        );
+    }
+
+    public static function storeFilterFromRequest(array $filter, int $perPage): StoreFilterDto
     {
         return new StoreFilterDto(
-            (string)Arr::get($filter, 'mode', QueryListMode::PAGINATION->value),
             (int)Arr::get($filter, 'partnerId'),
-            (int)Arr::get($filter, 'cityId'),
-            (int)Arr::get($filter, 'countryId'),
-            (int)Arr::get($filter, 'categoryId'),
+            (array)Arr::get($filter, 'cityIds', []),
+            (array)Arr::get($filter, 'countryIds', []),
+            (array)Arr::get($filter, 'categoryIds', []),
             (string)Arr::get($filter, 'search'),
             (boolean)Arr::get($filter, 'isOnline', false),
             (boolean)Arr::get($filter, 'isOffline', false),
             (int)Arr::get($filter, 'page', 1),
+            $perPage,
         );
     }
 
     public static function partnerFilterFromRequest(array $filter): PartnerFilterDto
     {
         return new PartnerFilterDto(
-            (int)Arr::get($filter, 'cityId'),
-            (int)Arr::get($filter, 'countryId'),
-            (int)Arr::get($filter, 'categoryId'),
+            (array)Arr::get($filter, 'cityIds', []),
+            (array)Arr::get($filter, 'countryIds', []),
+            (array)Arr::get($filter, 'categoryIds', []),
             (string)Arr::get($filter, 'search'),
             (boolean)Arr::get($filter, 'isOnline', false),
             (boolean)Arr::get($filter, 'isOffline', false),

@@ -15,3 +15,11 @@ tabs:
             type: text
             placeholder: Name
             tab: Settings
+        country:
+            label: Country
+            type: relation
+            span: left
+            required: true
+            select: name
+            tab: Settings
+            showSearch: true

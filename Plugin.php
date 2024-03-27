@@ -1,4 +1,6 @@
-<?php namespace BlackSeaDigital\Partners;
+<?php
+
+namespace BlackSeaDigital\Partners;
 
 use Blackseadigital\Partners\Components\PartnerPage;
 use Blackseadigital\Partners\Components\PartnerList;

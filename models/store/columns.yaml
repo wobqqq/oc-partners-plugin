@@ -9,11 +9,17 @@ columns:
         type: text
         searchable: true
         sortable: true
+    country:
+        label: Country
+        relation: country
+        select: name
+        searchable: false
+        sortable: true
     city:
         label: City
         relation: city
         select: name
-        searchable: true
+        searchable: false
         sortable: true
     lat:
         label: Lat

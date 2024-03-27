@@ -1,4 +1,6 @@
-<?php namespace Blackseadigital\Partners\Components;
+<?php
+
+namespace Blackseadigital\Partners\Components;
 
 use Blackseadigital\Partners\Models\Partner;
 use Cms\Classes\ComponentBase;

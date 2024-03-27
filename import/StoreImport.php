@@ -10,6 +10,7 @@ use Blackseadigital\Partners\Exceptions\ImportException;
 use Blackseadigital\Partners\Models\Store;
 use BlackSeaDigital\Partners\Services\StoreService;
 use BlackSeaDigital\Partners\Transformers\ImportTransformer;
+use Cache;
 use October\Rain\Database\Traits\Validation;
 
 final class StoreImport extends ImportModel
@@ -45,6 +46,8 @@ final class StoreImport extends ImportModel
                 $this->logError($i, $e->getMessage());
             }
         }
+
+        Cache::clear();
     }
 
     /**

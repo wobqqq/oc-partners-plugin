@@ -10,6 +10,7 @@ final readonly class StoreModelDto
         public string  $address,
         public int     $partnerId,
         public int     $cityId,
+        public int     $countryId,
         public ?string $externalId = null,
         public ?string $lat = null,
         public ?string $lon = null,

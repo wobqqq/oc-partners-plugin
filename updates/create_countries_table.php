@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->smallInteger('id')->unsigned()->autoIncrement();
             $table->string('name');
             $table->string('external_id')->index()->nullable();
+            $table->smallInteger('sort_order')->nullable()->unsigned();
             $table->softDeletes();
         });
     }

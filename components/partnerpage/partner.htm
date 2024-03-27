@@ -1,0 +1,79 @@
+title = "Partner"
+layout = "default"
+url = "/partners/:slug"
+
+[PartnerList]
+
+[PartnerPage]
+slug = "{{ :slug }}"
+==
+<h1>Partner page</h1>
+
+<h2>Partner</h2>
+{% set partner = PartnerPage.getPartner() %}
+{% if partner.logo is not empty %}
+    logo: <img src="{{ partner.logo.getUrl() }}" width="50" height="50" alt=""><br>
+{% endif %}
+name: {{ partner.name }}<br>
+description: {{ partner.description }}<br>
+offline points: {{ partner.offline_points }}<br>
+online points: {{ partner.online_points }}<br>
+interest-free installments: {{ partner.interest_free_installments }}<br>
+{% if partner.banners is not empty %}
+    banners: <br>
+    {% for banner in partner.banners %}
+        banner: <img src="{{ banner.getUrl() }}" width="50" height="50" alt=""><br>
+    {% endfor %}
+{% endif %}
+
+<h2>Filter of stores</h2>
+<h3>Countries</h3>
+{% set countries = PartnerList.getCountries({'partnerId': partner.id}) %}
+{% for country in countries %}
+    name: {{ country.name }} (id: {{ country.id }})<br>
+{% endfor %}
+
+<h3>Cities</h3>
+{# When the filter changes, update the cities partial and get the data from the URL as GET parameters #}
+{# TODO: Example of a URL for a filter: http://localhost/partner/fashion-fusion?countryIds[0]=1&countryIds[1]=4 #}
+{% set cities = PartnerList.getCities({
+    'partnerId': input('partnerId', partner.id),
+    'countryIds': input('countryIds', []),
+}) %}
+{% for city in cities %}
+    name: {{ city.name }} (id: {{ city.id }})<br>
+{% endfor %}
+
+<h3>Store List</h3>
+{# When the filter changes, update the stores partial and get the data from the URL as GET parameters #}
+{# TODO: Example of a URL for a filter: http://localhost/partner/fashion-fusion?countryIds[0]=1&countryIds[1]=4&cityIds[0]=4&cityIds[1]=2&page=1 #}
+{% set stores = PartnerList.getStores({
+    'partnerId': input('partnerId', partner.id),
+    'cityIds': input('cityIds', []),
+    'countryIds': input('countryIds', []),
+    'page': input('page', 1),
+}) %}
+{% for store in stores %}
+    {% if partner.logo is not empty %}
+        logo: <img src="{{ partner.logo.getUrl() }}" width="50" height="50" alt=""><br>
+    {% endif %}
+    name: {{ partner.name }}<br>
+    address: {{ store.address }}<br>
+    lat: {{ store.lat }}<br>
+    lon: {{ store.lon }}<br>
+{% endfor %}
+
+{# TODO: Illuminate\Pagination\LengthAwarePaginator stores #}
+Total: {{ stores.total() }}<br>
+Last page: {{ stores.lastPage() }}<br>
+
+<h3>Map of stores</h3>
+{# When the filter changes, update map of stores partial and get the data from the URL as GET parameters #}
+{# TODO: Example of a URL for a filter: http://localhost/partner/fashion-fusion?countryIds[0]=1&countryIds[1]=4&cityIds[0]=4&cityIds[1]=2 #}
+{% set storesMap = PartnerList.getStoresMap({
+    'partnerId': input('partnerId', partner.id),
+    'cityIds': input('cityIds', []),
+    'countryIds': input('countryIds', []),
+}) %}
+{# TODO: You can change output map data format in the Partner List component #}
+{{ storesMap }}

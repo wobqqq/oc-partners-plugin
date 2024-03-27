@@ -17,6 +17,14 @@ tabs:
             type: text
             placeholder: External id
             tab: Settings
+        country:
+            label: Country
+            type: relation
+            span: left
+            required: true
+            select: name
+            tab: Settings
+            showSearch: true
         city:
             label: City
             type: relation
@@ -25,6 +33,8 @@ tabs:
             select: name
             tab: Settings
             showSearch: true
+            dependsOn: country
+            conditions: country_id = :country_id
         lat:
             label: Lat
             span: left

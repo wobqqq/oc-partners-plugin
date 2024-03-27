@@ -45,8 +45,10 @@ final class FileService
                 ? md5_file($newFilePath)
                 : null;
 
-            $oldFile = $oldFiles->first(fn(File $oldFile) =>
-                $newFileHash === file_exists($oldFile->getLocalPath()) && md5_file($oldFile->getLocalPath())
+            $oldFile = $oldFiles->first(
+                fn(File $oldFile) => $newFileHash === file_exists($oldFile->getLocalPath()) && md5_file(
+                        $oldFile->getLocalPath()
+                    )
             );
 
             $this->attachOne($newFilePath, $oldFile, $attach);

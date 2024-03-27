@@ -4,9 +4,3 @@ scopes:
         modelClass: BlackSeaDigital\Partners\Models\Country
         conditions: country_id in (:filtered)
         nameFrom: name
-    city:
-        label: City
-        modelClass: BlackSeaDigital\Partners\Models\City
-        conditions: city_id in (:filtered)
-        nameFrom: name
-

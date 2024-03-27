@@ -17,6 +17,7 @@ final class StoreService
             'lat' => $storeModelDto->lat,
             'lon' => $storeModelDto->lon,
             'city_id' => $storeModelDto->cityId,
+            'country_id' => $storeModelDto->countryId,
             'partner_id' => $storeModelDto->partnerId,
             'deleted_at' => $storeModelDto->deletedAt,
         ]);
@@ -30,6 +31,7 @@ final class StoreService
             'lat' => $storeModelDto->lat,
             'lon' => $storeModelDto->lon,
             'city_id' => $storeModelDto->cityId,
+            'country_id' => $storeModelDto->countryId,
             'partner_id' => $storeModelDto->partnerId,
             'deleted_at' => $storeModelDto->deletedAt,
         ]);

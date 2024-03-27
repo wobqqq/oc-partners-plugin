@@ -10,6 +10,54 @@ use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
 use System\Models\File;
 
+/**
+ * Blackseadigital\Partners\Models\Partner
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property string|null $description
+ * @property int $is_active
+ * @property int $is_online
+ * @property int $is_offline
+ * @property string|null $external_id
+ * @property int $category_id
+ * @property string|null $online_points
+ * @property string|null $interest_free_installments
+ * @property string|null $offline_points
+ * @property string|null $link
+ * @property \October\Rain\Argon\Argon|null $deleted_at
+ * @method static \October\Rain\Database\Builder|Partner addWhereExistsQuery($query, $boolean = 'and', $not = false)
+ * @method static \October\Rain\Database\Collection<int, static> all($columns = ['*'])
+ * @method static \October\Rain\Database\Collection<int, static> get($columns = ['*'])
+ * @method static \October\Rain\Database\Builder|Partner lists($column, $key = null)
+ * @method static \October\Rain\Database\Builder|Partner newModelQuery()
+ * @method static \October\Rain\Database\Builder|Partner newQuery()
+ * @method static \October\Rain\Database\Builder|Partner orSearchWhere($term, $columns = [], $mode = 'all')
+ * @method static \October\Rain\Database\Builder|Partner orSearchWhereRelation($term, $relation, $columns = [], $mode = 'all')
+ * @method static \October\Rain\Database\Builder|Partner paginateAtPage($perPage, $currentPage)
+ * @method static \October\Rain\Database\Builder|Partner paginateCustom($perPage, $pageName)
+ * @method static \October\Rain\Database\Builder|Partner query()
+ * @method static \October\Rain\Database\Builder|Partner searchWhere($term, $columns = [], $mode = 'all')
+ * @method static \October\Rain\Database\Builder|Partner searchWhereRelation($term, $relation, $columns = [], $mode = 'all')
+ * @method static \October\Rain\Database\Builder|Partner simplePaginateAtPage($perPage, $currentPage)
+ * @method static \October\Rain\Database\Builder|Partner simplePaginateCustom($perPage, $pageName)
+ * @method static \October\Rain\Database\Builder|Partner whereCategoryId($value)
+ * @method static \October\Rain\Database\Builder|Partner whereDeletedAt($value)
+ * @method static \October\Rain\Database\Builder|Partner whereDescription($value)
+ * @method static \October\Rain\Database\Builder|Partner whereExternalId($value)
+ * @method static \October\Rain\Database\Builder|Partner whereId($value)
+ * @method static \October\Rain\Database\Builder|Partner whereInterestFreeInstallments($value)
+ * @method static \October\Rain\Database\Builder|Partner whereIsActive($value)
+ * @method static \October\Rain\Database\Builder|Partner whereIsOffline($value)
+ * @method static \October\Rain\Database\Builder|Partner whereIsOnline($value)
+ * @method static \October\Rain\Database\Builder|Partner whereLink($value)
+ * @method static \October\Rain\Database\Builder|Partner whereName($value)
+ * @method static \October\Rain\Database\Builder|Partner whereOfflinePoints($value)
+ * @method static \October\Rain\Database\Builder|Partner whereOnlinePoints($value)
+ * @method static \October\Rain\Database\Builder|Partner whereSlug($value)
+ * @mixin \Eloquent
+ */
 class Partner extends Model
 {
     use Validation;

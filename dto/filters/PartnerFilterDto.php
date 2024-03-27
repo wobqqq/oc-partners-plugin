@@ -7,9 +7,9 @@ namespace BlackSeaDigital\Partners\Dto\Filters;
 final readonly class PartnerFilterDto
 {
     public function __construct(
-        public ?int    $cityId = null,
-        public ?int    $countryId = null,
-        public ?int    $categoryId = null,
+        public ?array  $cityIds = [],
+        public ?array  $countryIds = [],
+        public ?array  $categoryIds = [],
         public ?string $search = null,
         public bool    $isOnline = false,
         public bool    $isOffline = false,

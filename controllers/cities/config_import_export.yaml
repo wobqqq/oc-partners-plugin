@@ -7,5 +7,5 @@ import:
                 label: External id
             name:
                 label: Name
-            country_external_id:
-                label: Country external id
+            city_external_id:
+                label: City external id

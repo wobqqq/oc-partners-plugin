@@ -18,9 +18,13 @@ return new class extends Migration {
             $table->string('lon', 20)->nullable();
             $table->string('external_id')->index()->nullable();
             $table->smallInteger('city_id')->unsigned()->index();
-            $table->smallInteger('partner_id')->unsigned();
+            $table->smallInteger('country_id')->unsigned()->index();
+            $table->smallInteger('partner_id')->unsigned()->index();
             $table->softDeletes();
 
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('blackseadigital_partners_countries');
             $table->foreign('city_id')
                 ->references('id')
                 ->on('blackseadigital_partners_cities');

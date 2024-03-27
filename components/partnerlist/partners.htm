@@ -1,0 +1,78 @@
+title = "Partners"
+layout = "default"
+url = "/partners"
+
+[PartnerList]
+==
+<h1>Partner page</h1>
+
+<h2>Filter</h2>
+
+<h3>Categories</h3>
+{% set categories = PartnerList.getCategories() %}
+{% for category in categories %}
+    name: {{ category.name }} (id: {{ category.id }})<br>
+{% endfor %}
+
+<h3>Countries</h3>
+{% set countries = PartnerList.getCountries() %}
+{% for country in countries %}
+    name: {{ country.name }} (id: {{ country.id }})<br>
+{% endfor %}
+
+<h3>Cities</h3>
+{# When the filter changes, update the cities partial and get the data from the URL as GET parameters #}
+{# TODO: Example of a URL for a filter: http://localhost/partners/countryIds[0]=1&countryIds[1]=4 #}
+{% set cities = PartnerList.getCities({'countryIds': input('countryIds', [])}) %}
+{% for city in cities %}
+    name: {{ city.name }} (id: {{ city.id }})<br>
+{% endfor %}
+
+<h2>Data</h2>
+
+<h3>Partner List</h3>
+{# When the filter changes, update the partners partial and get the data from the URL as GET parameters #}
+{#
+TODO: Example of a URL for a filter:
+http://localhost/partners?countryIds[0]=1&countryIds[1]=4&cityIds[0]=4&cityIds[1]=2&categoryIds[0]=1&search=some-search&isOnline=false&isOffline=false&page=1
+#}
+{% set partners = PartnerList.getPartners({
+    'cityIds': input('cityIds', []),
+    'countryIds': input('countryIds', []),
+    'categoryIds': input('categoryIds', []),
+    'search': input('search'),
+    'isOnline': input('isOnline', false),
+    'isOffline': input('isOffline', false),
+    'page': input('page', 1),
+}) %}
+{% for partner in partners %}
+    name: {{ partner.name }}<br>
+    offline points: {{ partner.offline_points }}<br>
+    online points: {{ partner.online_points }}<br>
+    interest-free installments: {{ partner.interest_free_installments }}<br>
+    {% if partner.logo is not empty %}
+        logo: <img src="{{ partner.logo.getUrl() }}" width="50" height="50" alt=""><br>
+    {% endif %}
+    <a href="{{ 'partner'| page({ slug:partner.slug }) }}">Partner page</a><br>
+{% endfor %}
+
+{# TODO: Illuminate\Pagination\LengthAwarePaginator partner #}
+Total: {{ partners.total() }}<br>
+Last page: {{ partners.lastPage() }}<br>
+
+<h3>Map of stores</h3>
+{# When the filter changes, update the map of stores partial and get the data from the URL as GET parameters #}
+{#
+TODO: Example of a URL for a filter:
+http://localhost/partners?countryIds[0]=1&countryIds[1]=4&cityIds[0]=4&cityIds[1]=2&categoryIds[0]=1&search=some-search&isOnline=false&isOffline=false
+#}
+{% set storesMap = PartnerList.getStoresMap({
+    'cityIds': input('cityIds', []),
+    'countryIds': input('countryIds', []),
+    'categoryIds': input('categoryIds', []),
+    'search': input('search'),
+    'isOnline': input('isOnline', false),
+    'isOffline': input('isOffline', false),
+}) %}
+{# TODO: You can change output map data format in the Partner List component #}
+{{ storesMap }}

@@ -21,6 +21,7 @@ use Blackseadigital\Partners\Models\Category;
 use Blackseadigital\Partners\Models\City;
 use Blackseadigital\Partners\Models\Country;
 use Blackseadigital\Partners\Models\Partner;
+use Str;
 
 final class ImportTransformer
 {
@@ -128,16 +129,16 @@ final class ImportTransformer
     public static function categoryFromRowDto(CategoryRowDto $categoryRowDto): CategoryModelDto
     {
         return new CategoryModelDto(
-            $categoryRowDto->name,
-            $categoryRowDto->externalId,
+            trim($categoryRowDto->name),
+            Str::slug($categoryRowDto->externalId),
         );
     }
 
     public static function countryFromRowDto(CountryRowDto $countryRowDto): CountryModelDto
     {
         return new CountryModelDto(
-            $countryRowDto->name,
-            $countryRowDto->externalId,
+            trim($countryRowDto->name),
+            Str::slug($countryRowDto->externalId),
         );
     }
 
@@ -153,9 +154,9 @@ final class ImportTransformer
         }
 
         return new CityModelDto(
-            $cityRowDto->name,
+            trim($cityRowDto->name),
             $country->id,
-            $cityRowDto->externalId,
+            Str::slug($cityRowDto->externalId),
         );
     }
 
@@ -164,7 +165,6 @@ final class ImportTransformer
      */
     public static function partnerFromRowDto(PartnerRowDto $partnerRowDto): PartnerModelDto
     {
-        \Log::info($partnerRowDto->categoryExternalId);
         $category = Category::whereExternalId($partnerRowDto->categoryExternalId)->withTrashed()->first();
 
         if (empty($category)) {
@@ -182,17 +182,17 @@ final class ImportTransformer
         )), $banners);
 
         return new PartnerModelDto(
-            $partnerRowDto->name,
+            trim($partnerRowDto->name),
             $category->id,
             $partnerRowDto->isActive,
             $partnerRowDto->isOnline,
             $partnerRowDto->isOffline,
-            $partnerRowDto->onlinePoints,
-            $partnerRowDto->offlinePoints,
-            $partnerRowDto->interestFreeInstallments,
-            $partnerRowDto->link,
-            $partnerRowDto->description,
-            $partnerRowDto->externalId,
+            trim($partnerRowDto->onlinePoints),
+            trim($partnerRowDto->offlinePoints),
+            trim($partnerRowDto->interestFreeInstallments),
+            trim($partnerRowDto->link),
+            trim($partnerRowDto->description),
+            Str::slug($partnerRowDto->externalId),
             $logo,
             $banners,
         );
@@ -216,12 +216,13 @@ final class ImportTransformer
         }
 
         return new StoreModelDto(
-            $storeRowDto->address,
+            trim($storeRowDto->address),
             $partner->id,
             $city->id,
-            $storeRowDto->externalId,
-            $storeRowDto->lat,
-            $storeRowDto->lon,
+            $city->country_id,
+            Str::slug($storeRowDto->externalId),
+            trim($storeRowDto->lat),
+            trim($storeRowDto->lon),
         );
     }
 }

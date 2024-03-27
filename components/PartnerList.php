@@ -1,4 +1,6 @@
-<?php namespace Blackseadigital\Partners\Components;
+<?php
+
+namespace Blackseadigital\Partners\Components;
 
 use Blackseadigital\Partners\Models\Category;
 use Blackseadigital\Partners\Models\City;
@@ -12,7 +14,7 @@ use Blackseadigital\Partners\Queries\PartnerQuery;
 use Blackseadigital\Partners\Queries\StoreQuery;
 use BlackSeaDigital\Partners\Transformers\FilterTransformer;
 use Cms\Classes\ComponentBase;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 final class PartnerList extends ComponentBase
@@ -47,15 +49,17 @@ final class PartnerList extends ComponentBase
     /**
      * @return Collection<int, Country>
      */
-    public function getCountries(): Collection
+    public function getCountries(array $filter = []): Collection
     {
-        return $this->countryQuery->getFiltered();
+        $countryFilterDto = FilterTransformer::countryFilterFromRequest($filter);
+
+        return $this->countryQuery->getFiltered($countryFilterDto);
     }
 
     /**
      * @return Collection<int, City>
      */
-    public function getCities(?array $filter = []): Collection
+    public function getCities(array $filter = []): Collection
     {
         $cityFilterDto = FilterTransformer::cityFilterFromRequest($filter);
 
@@ -65,7 +69,7 @@ final class PartnerList extends ComponentBase
     /**
      * @return LengthAwarePaginator<int, Partner>
      */
-    public function getPartners(?array $filter = []): LengthAwarePaginator
+    public function getPartners(array $filter = []): LengthAwarePaginator
     {
         $partnerFilterDto = FilterTransformer::partnerFilterFromRequest($filter);
 
@@ -76,31 +80,10 @@ final class PartnerList extends ComponentBase
      * @return LengthAwarePaginator<int, Store>
      */
 
-    public function getStores(?array $filter = []): LengthAwarePaginator
+    public function getStores(array $filter = []): LengthAwarePaginator
     {
-        $storeFilterDto = FilterTransformer::storeFilterFromRequest($filter);
+        $storeFilterDto = FilterTransformer::storeFilterFromRequest($filter, StoreQuery::LIST_PER_PAGE);
 
         return $this->storeQuery->getFiltered($storeFilterDto);
-    }
-
-    public function getStoresMap(?array $filter = []): string
-    {
-        $storeFilterDto = FilterTransformer::storeFilterFromRequest($filter);
-        $stores = $this->storeQuery->getFiltered($storeFilterDto);
-
-        $map = $stores
-            ->filter(fn(Store $store) => !empty($store->lat) && !empty($store->lon))
-            ->map(fn(Store $store) => [
-                'lat' => $store->lat,
-                'lon' => $store->lon,
-                'title' => $store->address,
-                'logo' => $store->partner?->logo?->getPath(),
-            ]);
-
-        try {
-            return json_encode($map, JSON_THROW_ON_ERROR);
-        } catch (\Exception $e) {
-            return '';
-        }
     }
 }
