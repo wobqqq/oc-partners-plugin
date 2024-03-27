@@ -1,5 +1,4 @@
 title = "Partners"
-layout = "default"
 url = "/partners"
 
 [PartnerList]
@@ -59,20 +58,3 @@ http://localhost/partners?countryIds[0]=1&countryIds[1]=4&cityIds[0]=4&cityIds[1
 {# TODO: Illuminate\Pagination\LengthAwarePaginator partner #}
 Total: {{ partners.total() }}<br>
 Last page: {{ partners.lastPage() }}<br>
-
-<h3>Map of stores</h3>
-{# When the filter changes, update the map of stores partial and get the data from the URL as GET parameters #}
-{#
-TODO: Example of a URL for a filter:
-http://localhost/partners?countryIds[0]=1&countryIds[1]=4&cityIds[0]=4&cityIds[1]=2&categoryIds[0]=1&search=some-search&isOnline=false&isOffline=false
-#}
-{% set storesMap = PartnerList.getStoresMap({
-    'cityIds': input('cityIds', []),
-    'countryIds': input('countryIds', []),
-    'categoryIds': input('categoryIds', []),
-    'search': input('search'),
-    'isOnline': input('isOnline', false),
-    'isOffline': input('isOffline', false),
-}) %}
-{# TODO: You can change output map data format in the Partner List component #}
-{{ storesMap }}

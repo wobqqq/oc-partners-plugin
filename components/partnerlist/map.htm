@@ -1,0 +1,51 @@
+title = "map"
+url = "/partners/map"
+==
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пример интеграции с Google Картами</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+{#
+    TODO: Full filter:
+    http://localhost/partners?countryIds[0]=1&countryIds[1]=4&cityIds[0]=4&cityIds[1]=2&categoryIds[0]=1&search=some-search&isOnline=0&isOffline=0&partnerId=1&page=1
+#}
+<script>
+    function sendRequest(page = 1, map) {
+        {# TODO: chunk of 10k #}
+        $.getJSON(`http://localhost/api/stores/map.json?&page=${page}`, function(data) {
+            $.each(data, function(key, marker) {
+                const markerPosition = {lat: Number(marker.lat), lng: Number(marker.lon)};
+                const markerObject = new google.maps.Marker({
+                    position: markerPosition,
+                    map: map,
+                });
+            });
+
+            if (data.length > 0) {
+                sendRequest((page + 1), map);
+            }
+        });
+    }
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 1,
+            center: {lat: -33.86882, lng: 151.209295}
+        });
+
+        sendRequest(1, map)
+
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key&callback=initMap" async defer></script>
+</body>
+</html>
