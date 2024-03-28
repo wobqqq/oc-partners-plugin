@@ -17,9 +17,9 @@ use System\Models\File;
  * @property string $name
  * @property string $slug
  * @property string|null $description
- * @property int $is_active
- * @property int $is_online
- * @property int $is_offline
+ * @property bool $is_active
+ * @property bool $is_online
+ * @property bool $is_offline
  * @property string|null $external_id
  * @property int $category_id
  * @property string|null $online_points
@@ -112,6 +112,12 @@ class Partner extends Model
         'online_points',
         'link',
         'deleted_at',
+    ];
+
+    public $casts = [
+        'is_active' => 'boolean',
+        'is_offline' => 'boolean',
+        'is_online' => 'boolean',
     ];
 
     public $timestamps = false;
